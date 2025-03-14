@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - Smart Plant Monitoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+        }
+        .branding {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .branding img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+        .branding .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        .nav {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav li {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #333;
+            transition: background-color 0.2s;
+        }
+        .nav li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+            padding: 10px 0;
+        }
+        .nav li .material-icons {
+            font-size: 18px;
+            margin-right: 10px;
+            color: #555;
+        }
+        .nav li:hover {
+            background-color: #f0f0f0;
+        }
+        .logout {
+            padding: 15px 20px;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            background-color: #d9534f;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .logout:hover {
+            background-color: #c9302c;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #222;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="branding">
+                <img src="https://mui.com/static/logo.png" alt="MUI Logo" />
+                <div class="title">TECH TINKERERS</div>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="dashboard.html"><span class="material-icons">dashboard</span> Dashboard</a></li>
+                    <li><a href="research.html"><span class="material-icons">description</span> Research</a></li>
+                    <li><a href="static/reports.html"><span class="material-icons">bar_chart</span> Reports</a></li>
+                    <li><a href="about.html"><span class="material-icons">layers</span> About</a></li>
+                </ul>
+            </div>
+            <a href="logout.html" class="logout">Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>🌱 Welcome to Smart Plant Monitoring!</h1>
+            
+            <div class="section">
+                <h2>🔍 What is This Project About?</h2>
+                <p>Plants are the lifeline of our planet, and keeping them healthy is essential. Our Smart Plant Monitoring System combines artificial intelligence,Internet of Things (IoT), and automated irrigation to ensure plants grow in the best possible conditions.</p>
+                <p>From detecting plant diseases to automatically watering plants, our system makes farming smarter, more efficient, and less time-consuming! 🌿💧</p>
+            </div>
+
+            <div class="section">
+                <h2>⚙️ How Does It Work?</h2>
+                <p>Here's how our system helps farmers and researchers monitor plant health:</p>
+                <ul>
+                    <li>📷 A camera module captures images of plant leaves.</li>
+                    <li>🤖 An AI-powered machine learning model analyzes the images and detects plant diseases.</li>
+                    <li>🌡️ Sensors measure temperature, humidity, and soil moisture levels.</li>
+                    <li>💦 If the soil is too dry, the system automatically turns on the water pump to irrigate the plant.</li>
+                    <li>☁️ All data is stored securely on Firebase, allowing users to monitor their plants from anywhere in the world.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🚀 Key Technologies Used</h2>
+                <p>Our system is powered by a combination of cutting-edge technologies:</p>
+                <ul>
+                    <li>📡 IoT Sensors - Measure soil moisture, temperature, and humidity in real time.</li>
+                    <li>📷 Machine Learning Model - Identifies plant diseases from leaf images.</li>
+                    <li>💾 Firebase Realtime Database - Stores sensor data and disease analysis results.</li>
+                    <li>🔄 Automated Watering System - Ensures optimal soil moisture levels.</li>
+                    <li>🖥️ Raspberry Pi - The brain of the system, processing data and controlling components.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>✅ Why is This System Useful?</h2>
+                <ul>
+                    <li>🌿 Helps farmers detect plant diseases early, reducing crop loss.</li>
+                    <li>💦 Saves water with smart irrigation, preventing overwatering.</li>
+                    <li>📊 Provides real-time monitoring for better decision-making.</li>
+                    <li>🛰️ Works remotely, allowing users to monitor plant health from anywhere.</li>
+                    <li>💡 Reduces manual labour, making plant care more efficient.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🔮 What’s Next?</h2>
+                <p>We are working on adding AI-powered growth predictions, mobile notifications for disease alert,and multi-crop support to make our system even more powerful.</p>
+                <p>Stay tuned for exciting updates! 🚀</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

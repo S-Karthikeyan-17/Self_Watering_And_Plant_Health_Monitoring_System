@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDBCTBEIlrCUF2fU-os9_blwRxuEjHStKA",
+      authDomain: "plant-monitoring-system-b1935.firebaseapp.com",
+      databaseURL: "https://plant-monitoring-system-b1935-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "plant-monitoring-system-b1935",
+      storageBucket: "plant-monitoring-system-b1935.firebasestorage.app",
+      messagingSenderId: "546393527427",
+      appId: "1:546393527427:web:1e471126bea8d21b1577b6",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Update temperature independently
+    const tempRef = ref(db, "plant_monitor/temperature");
+    onValue(tempRef, (snapshot) => {
+      const temp = snapshot.val();
+      if (temp !== null) {
+        document.getElementById("tempValue").textContent = `${temp}°C`;
+      }
+    });
+
+    // Update humidity independently
+    const humidityRef = ref(db, "plant_monitor/humidity");
+    onValue(humidityRef, (snapshot) => {
+      const humidity = snapshot.val();
+      if (humidity !== null) {
+        document.getElementById("humidityValue").textContent = `${humidity}%`;
+      }
+    });
+
+    // Update soil moisture independently
+    const soilRef = ref(db, "plant_monitor/soil_moisture");
+    onValue(soilRef, (snapshot) => {
+      const soil = snapshot.val();
+      if (soil !== null) {
+        document.getElementById("soilValue").textContent = `${soil}`;
+      }
+    });
+  </script>
+
+  <style>
+    /* Styling as provided in the original code */
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .branding {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .branding img {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+
+    .branding .title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .nav {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav li {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 14px;
+      color: #333;
+      transition: background-color 0.2s;
+    }
+
+    .nav li a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .nav li .material-icons {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #555;
+    }
+
+    .nav li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .logout {
+      padding: 15px 20px;
+      text-align: center;
+      cursor: pointer;
+      color: white;
+      background-color: #d9534f;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .logout:hover {
+      background-color: #c9302c;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .header {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .explanation-section {
+      margin-bottom: 30px;
+    }
+
+    .explanation-section h2 {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .gauges {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .gauge {
+      text-align: center;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      flex: 1;
+    }
+
+    .gauge span {
+      font-size: 32px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .gauge-caption {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .gauges {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="branding">
+        <img src="https://mui.com/static/logo.png" alt="MUI Logo" />
+        <div class="title">TECH TINKERERS</div>
+      </div>
+      <div class="nav">
+        <ul>
+          <li><a href="dashboard.html"><span class="material-icons">dashboard</span> Dashboard</a></li>
+          <li><a href="research.html"><span class="material-icons">description</span> Research</a></li>
+          <li><a href="static/reports.html"><span class="material-icons">bar_chart</span> Reports</a></li>
+          <li><a href="about.html"><span class="material-icons">layers</span> About</a></li>
+        </ul>
+      </div>
+      <a href="logout.html" class="logout">Logout</a>
+    </div>
+
+    <div class="main-content">
+      <div class="header">DASHBOARD</div>
+      <p>Plant Monitoring System provides a platform to manage Greenhouse by tracking the phases of plant harvest, identifying plant disorders, and monitoring plant growth using spectral data from plant images.</p>
+
+      <div class="explanation-section">
+        <h2>🌡 Temperature</h2>
+        <p>Temperature plays a crucial role in plant growth. Most plants grow best in temperatures between 20°C and 30°C.</p>
+      </div>
+
+      <div class="explanation-section">
+        <h2>💧 Soil Moisture</h2>
+        <p>Soil moisture indicates the amount of water in the soil. For healthy plant growth, moisture levels should be between 40% and 60%.</p>
+      </div>
+
+      <div class="explanation-section">
+        <h2>🌫 Humidity</h2>
+        <p>Humidity refers to the amount of moisture in the air. Plants thrive in environments with 50% to 70% humidity.</p>
+      </div>
+
+      <div class="gauges">
+        <div class="gauge" id="tempGauge">
+          <span id="tempValue">--</span>
+          <div class="gauge-caption">Temperature 🌡</div>
+        </div>
+        <div class="gauge" id="soilGauge">
+          <span id="soilValue">--</span>
+          <div class="gauge-caption">Soil Moisture 💧</div>
+        </div>
+        <div class="gauge" id="humidityGauge">
+          <span id="humidityValue">--</span>
+          <div class="gauge-caption">Humidity 🌫</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

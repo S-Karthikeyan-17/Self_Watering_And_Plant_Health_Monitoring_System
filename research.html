@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Research - TECH TINKERERS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+    }
+    .branding {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    .branding img {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+    .branding .title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .nav {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav li {
+      display: flex;
+      align-items: center;
+      padding: 10px 0; /* Adjusted padding for better spacing */
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+    .nav li a, .nav li button {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 10px 0; /* Added padding for better spacing */
+    }
+    .nav li .material-icons {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #555; /* Adjusted icon color to match previous pages */
+    }
+    .nav li:hover {
+      background-color: #f0f0f0;
+    }
+    .logout {
+      padding: 15px 20px;
+      text-align: center;
+      color: white;
+      background-color: #d9534f;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .logout:hover {
+      background-color: #c9302c;
+    }
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="branding">
+        <img src="https://mui.com/static/logo.png" alt="MUI Logo" />
+        <div class="title">TECH TINKERERS</div>
+      </div>
+      <div class="nav">
+        
+        <ul>
+          <li><a href="dashboard.html"><span class="material-icons">dashboard</span> Dashboard</a></li>
+          <li><a href="research.html"><span class="material-icons">description</span> Research</a></li>
+        </ul>
+        <ul>
+          <li><a href="static/reports.html"><span class="material-icons">bar_chart</span> Reports</a></li>
+          <li><a href="about.html"><span class="material-icons">layers</span> About</a></li>
+        </ul>
+      </div>
+      <a href="logout.html" class="logout">Logout</a>
+    </div>
+
+    <div class="main-content">
+      <div class="card">
+        <h1>Research Overview</h1>
+        <p>This section provides an overview of our plant monitoring and health research. Below are some interactive graphs and visualizations.</p>
+      </div>
+      <div class="card">
+        <h2>Temperature Trends</h2>
+        <canvas id="temperatureChart"></canvas>
+      </div>
+      <div class="card">
+        <h2>Humidity Analysis</h2>
+        <canvas id="humidityChart"></canvas>
+      </div>
+      <div class="card">
+        <h2>Visual Insights</h2>
+        <img src="images/output.png" alt="Plant Health Visualization" style="width: 100%; border-radius: 8px;">
+        <br>
+        <img src="images/graph.png" alt="Plant Health Visualization" style="width: 100%; border-radius: 8px;">
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const temperatureCtx = document.getElementById('temperatureChart').getContext('2d');
+    const humidityCtx = document.getElementById('humidityChart').getContext('2d');
+
+    new Chart(temperatureCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Temperature (°C)',
+          data: [15, 17, 20, 25, 22, 18],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          tension: 0.1
+        }]
+      }
+    });
+
+    new Chart(humidityCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Humidity (%)',
+          data: [70, 65, 80, 85, 75, 90],
+          backgroundColor: 'rgba(153, 102, 255, 0.6)',
+          borderColor: 'rgba(153, 102, 255, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TECH TINKERERS Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+    }
+    .branding {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    .branding img {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+    .branding .title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+    .nav {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav li {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 14px;
+      color: #333;
+      transition: background-color 0.2s;
+    }
+    .nav li a, .nav li button {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+      padding: 10px 0;
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .nav li .material-icons {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #555;
+    }
+    .nav li:hover {
+      background-color: #f0f0f0;
+    }
+    .logout {
+      padding: 15px 20px;
+      text-align: center;
+      cursor: pointer;
+      color: white;
+      background-color: #d9534f;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .logout:hover {
+      background-color: #c9302c;
+    }
+
+    .main-content {
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;  /* Centers vertically */
+    height: 100vh;  /* Full height of viewport */
+    width: 100%; /* Ensures it fills available space */
+}
+
+.center-text {
+    text-align: center; /* Centers text */
+    width: 100%;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="branding">
+        <img src="https://mui.com/static/logo.png" alt="MUI Logo" />
+        <div class="title">TECH TINKERERS</div>
+      </div>
+      <div class="nav">
+        <ul>
+          <!--<li><button onclick="showHome()"><span class="material-icons">home</span> Home</button></li>-->
+          <li><a href="dashboard.html"><span class="material-icons">dashboard</span> Dashboard</a></li>
+          <li><a href="research.html"><span class="material-icons">description</span> Research</a></li>
+          <li><a href="static/reports.html"><span class="material-icons">bar_chart</span> Reports</a></li>
+          <li><a href="about.html"><span class="material-icons">layers</span> About</a></li>
+          
+
+        </ul>
+      </div>
+      <a href="logout.html" class="logout">Logout</a>
+    </div>
+    
+   <div class="main-content">
+    <div class="center-text">
+        <h1>Welcome to TECH TINKERERS</h1>
+        <p>Select an option from the sidebar to navigate.</p>
+    </div>
+</div>
+
+    
+ </div>
+
+  <script>
+    function showHome() {
+      document.getElementById('content').innerHTML = `
+        <h1>Welcome to TECH TINKERERS</h1>
+        <p>Select an option from the sidebar to navigate.</p>
+      `
+    }
+  </script>
+</body>
+</html>
